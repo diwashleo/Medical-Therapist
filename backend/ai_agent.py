@@ -60,30 +60,6 @@ You have access to three tools:
 Always take necessary action. Respond kindly, clearly, and supportively.
 """
 
-# def parse_response(stream):
-#     tool_called_name = "None"
-#     final_response = None
-
-#     for s in stream:
-#         # Check if a tool was called
-#         tool_data = s.get('agent')
-#         if tool_data:
-#             tool_messages = tool_data.get('messages')
-#             if tool_messages and isinstance(tool_messages, list):
-#                 for msg in tool_messages:
-#                     tool_called_name = getattr(msg, 'name', 'None')
-
-#         # Check if agent returned a message
-#         agent_data = s.get('tools')
-#         if agent_data:
-#             messages = agent_data.get('messages')
-#             if messages and isinstance(messages, list):
-#                 for msg in messages:
-#                     if msg.content:
-#                         final_response = msg.content
-
-#     return tool_called_name, final_response
-
 
 
 def parse_response(stream):
@@ -115,6 +91,31 @@ def parse_response(stream):
                         final_response = msg.content
 
     return tool_called_name, final_response
+
+
+# def parse_response(stream):
+#     tool_called_name = "None"
+#     final_response = None
+
+#     for s in stream:
+#         # Check if a tool was called
+#         tool_data = s.get('agent')
+#         if tool_data:
+#             tool_messages = tool_data.get('messages')
+#             if tool_messages and isinstance(tool_messages, list):
+#                 for msg in tool_messages:
+#                     tool_called_name = getattr(msg, 'name', 'None')
+
+#         # Check if agent returned a message
+#         agent_data = s.get('tools')
+#         if agent_data:
+#             messages = agent_data.get('messages')
+#             if messages and isinstance(messages, list):
+#                 for msg in messages:
+#                     if msg.content:
+#                         final_response = msg.content
+
+#     return tool_called_name, final_response
 
 
 # if __name__ == "__main__":
